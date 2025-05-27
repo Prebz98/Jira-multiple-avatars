@@ -12,7 +12,7 @@ This browser extension adds visual avatars for additional assignees in Jira Kanb
 
 ---
 
-## 🚀 Installation (Developer Mode)
+## 🚀 Installation
 
 1. Clone or download this repository:
 

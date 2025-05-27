@@ -1,17 +1,15 @@
 (async () => {
-  // ---- 1. Load configuration ------------------------------------------------
-  let cfg;
+  let config;
   try {
     const res = await fetch(chrome.runtime.getURL('config.json'));
-    cfg = await res.json();
+    config = await res.json();
   } catch (e) {
     console.error('Jira-Multi-Avatar: config.json missing or invalid', e);
     return;
   }
 
-  const { multipleAssigneesFieldId, avatars } = cfg;
+  const { multipleAssigneesFieldId, avatars } = config;
 
-  // ---- 2. Core logic --------------------------------------------------------
   function addAvatarsToCard(card) {
     const customField = card.querySelector(`#${multipleAssigneesFieldId}`);
 
@@ -29,7 +27,7 @@
 
     names.forEach(name => {
       const url = avatars[name];
-      if (!url) return;  // skip if no URL configured
+      if (!url) return;
 
       const img = document.createElement('img');
       img.className = 'custom-multi-avatar';
@@ -52,8 +50,8 @@
     document.querySelectorAll('.js-issue').forEach(addAvatarsToCard);
   }
 
-  // Run once after initial load
-  setTimeout(processAllCards, 60000);
+  // Run once after initial load, and then every 10 minutes
+  setTimeout(processAllCards, 600000);
 
   // Watch for SPA updates (drag-&-drop, column changes, etc.)
   new MutationObserver(processAllCards).observe(document.body, {

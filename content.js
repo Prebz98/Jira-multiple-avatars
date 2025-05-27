@@ -9,11 +9,12 @@
     return;
   }
 
-  const { customFieldId, avatars } = cfg;
+  const { multipleAssigneesFieldId, avatars } = cfg;
 
   // ---- 2. Core logic --------------------------------------------------------
   function addAvatarsToCard(card) {
-    const customField = card.querySelector(`#${customFieldId}`);
+    const customField = card.querySelector(`#${multipleAssigneesFieldId}`);
+
     if (!customField) return;
     if (card.querySelector('.custom-multi-avatar')) return; // no duplicates
 
@@ -52,7 +53,7 @@
   }
 
   // Run once after initial load
-  setTimeout(processAllCards, 10000);
+  setTimeout(processAllCards, 60000);
 
   // Watch for SPA updates (drag-&-drop, column changes, etc.)
   new MutationObserver(processAllCards).observe(document.body, {

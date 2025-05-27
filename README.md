@@ -7,7 +7,6 @@ This browser extension adds visual avatars for additional assignees in Jira Kanb
 ## 🎯 Features
 
 - 🧑‍🤝‍🧑 Show avatars for multiple assignees from a custom Jira field
-- 🔍 Detects and works with dynamic Jira pages (SPA)
 - ⚙️ Configurable avatar image URLs
 - 🧩 Chrome extension built with Manifest V3
 

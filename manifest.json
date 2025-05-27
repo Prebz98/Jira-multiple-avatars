@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Jira Multi-Assignee Avatars",
+  "version": "1.0",
+  "description": "Adds avatars for additional assignees from a custom field on Jira Kanban boards.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/jira/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "config.json"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
